@@ -1,0 +1,125 @@
+{% extends "usuario/Productdetail.html" %}
+{% load staticfiles %}
+
+
+
+
+{% block content %}
+<div class="w3_agile_latest_arrivals">
+			<h3 class="wthree_text_info" style="color: #D88416;">Productos  <span>Sugeridos</span></h3>
+
+
+
+
+
+			
+			<div class="resp-tabs-container">
+				<div style="text-align: center; justify-content:center; ">
+<form method="POST">	
+
+					
+
+                     <select  class="modal-title" style="text-align: center; border-radius: 35px;" name="nombre_campana">
+					<option value="value1" > Selecciona Una marca</option>
+					<option value="1">General</option>
+  					<option value="2">Arsen</option>
+  				   <option value="3" >Horse</option>
+  					<option value="4">Outloock</option>
+  					<option value="4">Owen</option>
+  					<option value="5">RK6 600</option>
+  					<option value="6">Silverblade250</option>
+  				   <option value="7" >TX200</option>
+  					<option value="8">Cruiser</option>
+  					<option value="9">EK4</option>
+  					<option value="10">GEV1000</option>
+  					<option value="11">City Classica</option>
+  				   <option value="12" >EK1</option>
+  					<option value="13">KALIO</option>
+  					<option value="14">Maries</option>
+  					<option value="15">Foton</option>
+  				   <option value="16" >SX-150</option>
+  					<option value="17">TD-150</option>
+  					<option value="18">HD-1000-ZSN</option>
+  					
+					</select>
+								
+
+                       	<button type="submit">enviar</button>
+					 </div>
+					 <br>
+					 <br>
+					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+					
+				{% for segundoproducto in Producto %}
+					  <div class="col-md-3 product-men single">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ segundoproducto.image.url }}" alt="" class="pro-image-front" style="width: 350px; height: 335px">
+										<img src="{{ segundoproducto.image.url }}" alt="" class="pro-image-back" style="width: 350px; height: 335px">
+											<div class="men-cart-pro" >
+												<div class="inner-men-cart-pro">
+													<a href="single.html" class="link-product-add-cart">Ver Producto</a>
+												</div>
+											</div>
+											<span class="product-new-top"></span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="#">{{ segundoproducto.title }}</a></h4>
+										{% if segundoproducto.discount_price %}
+										<div class="info-product-price">
+											<span class="item_price">${{ segundoproducto.discount_price }}</span>
+                      {% endif %}
+											<del>${{ segundoproducto.price }}</del>
+										</div>
+										{% csrf_token %}
+															
+									<tr><th><label>producto:</label></th><td><ul id="id_producto">
+
+    <label for="{{ segundoproducto.id }}"><input type="checkbox" name="producto" value={{ segundoproducto.id  }} id="{{ segundoproducto.id }}" >
+ {{ segundoproducto.title }}</label>
+
+
+    
+</ul></td></tr>
+													
+														
+																			
+									</div>
+								</div>
+							</div>
+							</div>
+                       	
+
+																			
+									</div>
+
+
+									
+
+									
+									{% endfor %}
+								
+												</form>	
+								
+							<div class="clearfix"> </div>
+					<!--//slider_owl-->
+		         </div>
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+

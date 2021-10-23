@@ -24,10 +24,11 @@ SECRET_KEY = ')c1=w68j$(gy63$t*n553w)6sdjo01)=*$+sc5dov@%qi6_)hl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#'pruebamultimotoresgemca.herokuapp.com ' ,  
+ALLOWED_HOSTS = ['pruebamultimotoresgemca.herokuapp.com' , 'localhost'] 
 
-ALLOWED_HOSTS = []
-
-
+#datos para decirle que estoy usando un modelo de usuario que yo cree
+AUTH_USER_MODEL = 'usuarios.User'
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,10 +38,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'vestas_usuario',
     'usuarios',
     'carro',
-    'crispy_forms'
+    'submenu',
+    'crispy_forms',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+    'django_inlinecss',
+    'social_django',
+    
 
     
 
@@ -54,6 +65,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'ecomerce.middleware.ProfileCompletionMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'ecomerce.urls'
@@ -61,34 +74,67 @@ ROOT_URLCONF = 'ecomerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
+
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'carro.context_processor.importe_total_carro',
+                'social_django.context_processors.backends',  
+                'social_django.context_processors.login_redirect',
             ],
+
+
 
             
         },
+
+        
     },
+]
+
+
+
+
+
+AUTHENTICATION_BACKENDS=[
+
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+
 ]
 
 WSGI_APPLICATION = 'ecomerce.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+}"""
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dq2m55g0tqg17',
+        'USER' : 'anzztyzklfjkvg',
+        'PASSWORD': 'ac3ab0c5bbe50d81d7b9c72e5198a3fb1ff4c63b3db0b1904ff5377a7217963e',
+        'HOST': 'ec2-52-1-20-236.compute-1.amazonaws.com',
+        'PORT' : '5432',
+    }
 }
+ 
+
+
+
+
+
 
 
 # Password validation
@@ -134,5 +180,68 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS=(os.path.join(BASE_DIR , 'static'),)
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR ,'media')
 MEDIA_URL = '/media/'
+
+
+
+EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_USE_TLS=True 
+EMAIL_PORT=587
+EMAIL_HOST_USER="angelourbannoo@gmail.com"
+EMAIL_HOST_PASSWORD="angelo2021"
+
+
+
+
+SITE_ID=2
+LOGIN_URL = 'login' 
+LOGIN_REDIRECT_URL = 'home'
+
+SOCIALACCOUNT_PROVIDERS={
+    
+    'google':{
+        'SCOPE':[
+            'profile',
+            'email',
+
+
+            ],
+            'AUTH_PARAMS':{
+                'access_type': 'online',
+            }
+    },
+
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time',
+        ],
+        'EXCHANGE_TOKEN': True,
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.10',
+    }
+
+
+    
+
+
+
+
+}

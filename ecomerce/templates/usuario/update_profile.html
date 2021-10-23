@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+
+
+{% block container %}
+
+
+
+
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-6 pt-3 pb-3" id="profile-box">
+                <h4 class="mb-4">Continua con tu Registro</h4>
+
+                <form method="POST" >
+                    {% csrf_token %}
+
+                   
+
+                    
+
+                    {{form.as_p}}
+
+                    <button type="submit" class="btn btn-primary btn-block mt-5">Crear</button>
+                </form>
+            </div>
+        </div>
+    </div> 
+
+{% endblock %}
+

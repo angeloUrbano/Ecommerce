@@ -1,0 +1,170 @@
+
+
+{% load staticfiles %}
+<div style="text-align: center; justify-content:center; ">
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h2 class="modal-title"> Edecion de Producto</h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			</div>
+
+			<div class="row justify-content-md-center">
+            <div class="col-6 pt-3 pb-3" id="profile-box">
+              <div class="card-title py-3">
+			<form action="{% url 'ventas:editar_producto' object.id %}" method="POST" enctype="multipart/form-data">
+				{% csrf_token%} 
+ 
+			<div class="modal-body modal-body-sub_agile">
+				<div class="col-md-8 modal_body_left modal_body_left1">
+				<div class="form-grup">
+
+					<div class="styled-input agile-styled-input-top">
+								<input type="text" name="title" required="" value="{{object.title}}">
+								<label>Titulo</label>
+								<span></span>
+							</div>
+
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" name="price" required="" value="{{object.price}}">
+								<label>Precio</label>
+								<span></span>
+							</div>
+
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" name="discount_price" required=""value="{{object.discount_price}}">
+								<label>Descuento</label>
+								<span></span>
+							</div>
+
+							<div class="styled-input agile-styled-input-top">
+								<textarea  name="description" required="" v >{{object.description}}</textarea>
+								<label>description</label>
+								<span></span>
+							</div>
+
+
+
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" name="detalle" required="" value="{{object.detalle}}">
+								<label>detalle</label>
+								<span></span>
+							</div>
+
+
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" name="detalle2" required="" value="{{object.detalle2}}">
+								<label>detalle 1</label>
+								<span></span>
+							</div>
+
+
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" name="detalle3" required="" value="{{object.detalle3}}">
+								<label>detalle 2</label>
+								<span></span>
+							</div>
+
+
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" name="detalle4" required="" value="{{object.detalle4}}">
+								<label>detalle 3</label>
+								<span></span>
+							</div>
+
+
+
+
+
+
+
+
+							<div class="styled-input agile-styled-input-top">
+								{{form.image}}
+								<label>Cambiar Imagen</label>
+								<span></span>
+							</div>
+
+
+
+                            <div class="styled-input agile-styled-input-top">
+								{{form.image2}}
+								<label>Cambiar Imagen</label>
+								<span></span>
+							</div>
+
+
+                           <div class="styled-input agile-styled-input-top">
+								{{form.image3}}
+								<label>Cambiar Imagen</label>
+								<span></span>
+							</div>
+
+                            <div class="styled-input agile-styled-input-top">
+								{{form.image4}}
+								<label>Cambiar Imagen</label>
+								<span></span>
+							</div>
+							<br>
+
+					
+								{{form.disponible}}
+								<label>Disponible</label>
+								
+							
+
+
+
+
+
+								<div class="styled-input agile-styled-input-top">
+								{{form.categoria}}
+								<label>Categoria</label>
+								<span></span>
+							</div>
+
+						
+
+
+								
+
+
+
+							
+</div>
+				
+
+			</div>
+			
+				<button class="btn btn-danger" type="button" data-dismiss="modal"> Cancelar</button>
+				<button class="btn btn-primary" type="submit" > Aprobar</button>
+				
+
+			
+
+			</form>
+			</div>
+			</div>
+			</div>
+				
+		
+
+
+
+	</div>
+	
+
+
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+

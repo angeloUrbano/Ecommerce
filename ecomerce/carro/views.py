@@ -56,7 +56,7 @@ def  limpiar_carro(request , producto_id):
 
 
 
-
+@login_required
 def agregar_producto(request, producto_id):
     producto = get_object_or_404(Producto, id=producto_id)
     order_producto, created = OrderItem.objects.get_or_create(
@@ -146,14 +146,39 @@ def restar_producto(request, producto_id):
 
 
 # this view nedd an LoginRequiredMixin
-class OrderSummaryView(View):
+
+class OrderSummaryView(View): 
     def get(self, *args, **kwargs):
         try:
             order = Order.objects.get(user=self.request.user, ordered=False)
+
+
+            Cantidad= 0
+            Cod_factura = 0
+            cliente = self.request.user.profile.primer_nombre
+            cliente2= self.request.user.profile.apellido
+            nombre = ''
+            precio_total = 0
+            for dato in order.roducto.all():
+                print(dato.producto.title)
+                Cod_factura = dato.id
+                Cantidad +=dato.quantity
+                nombre = nombre + ' , %20' +  dato.producto.title
+                print(dato.get_amount_saved())
+                precio_total = dato.get_total_item_price()
+
+
+            dato ='lo logre'
+            
+
+            var_envio_whatsapp ={'Cod_factura' : str(Cod_factura) , 'cliente':cliente , 'cliente2': cliente2 , 'Cantidad':str(Cantidad) ,
+            'nombre_producto': nombre, 'precio_total': str(precio_total) , 'codigo_factura':str(Cod_factura) }
+
             context = {
-                'object': order
+                'object': order,
+                'var_envio_whatsapp' :var_envio_whatsapp
             }
             return render(self.request, 'carro/order_summary.html', context)
         except ObjectDoesNotExist:
             messages.warning(self.request, "You do not have an active order")
-            return redirect("/")        
+            return render(self.request, 'carro/order_summary.html')        

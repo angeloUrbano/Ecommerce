@@ -1,0 +1,138 @@
+{% extends "usuario/Productdetail.html" %}
+{% load staticfiles %}
+
+
+
+
+{% block content %}
+<div class="w3_agile_latest_arrivals">
+			<h3 class="wthree_text_info" style="color:  #D88416;">Catalogo  <span style="color:  #D88416;" > de Productos </span></h3>
+<div style="text-align: center; justify-content:center; ">
+	<form method="GET" action="{% url 'datos_submenu:busqueda_por_marcas1' %}">
+		{% csrf_token %}
+			<select  class="modal-title" style="text-align: center; border-radius: 35px;" name="select">
+					<option value="value1" > Selecciona Una marca</option>
+  					<option value="Arsen">Arsen</option>
+  				   <option value="Horse" >Horse</option>
+  					<option value="Outloock">Outloock</option>
+  					<option value="Owen">Owen</option>
+  					<option value="RK6 600">RK6 600</option>
+  					<option value="Silverblade 250">Silverblade 250</option>
+  				   <option value="TX 200" >TX 200</option>
+  					<option value="Cruiser">Cruiser</option>
+  					<option value="EK4">EK4</option>
+  					<option value="GEV1000">GEV1000</option>
+  					<option value="City Classica">City Classica</option>
+  				   <option value="EK1" >EK1</option>
+  					<option value="KALIO">KALIO</option>
+  					<option value="Maries">Maries</option>
+  					<option value="Foton">Foton</option>
+  				   <option value="SX-150" >SX-150</option>
+  					<option value="TD-150">TD-150</option>
+  					<option value="HD-1000-ZSN">HD-1000-ZSN</option>
+  					
+					</select>
+
+				<button style="border-radius: 35px; background:#002961; " ><i style="color: white;" class="fa fa-search" aria-hidden="true"></i></button>
+			</form>
+			</div>
+<div class="resp-tabs-container">
+				<br>
+				<br>
+
+<form method="POST">
+			
+
+					 
+					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+						{% if catalogo %}
+				{% for segundoproducto in catalogo %}
+					  <div class="col-md-3 product-men single">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ segundoproducto.image.url }}" alt="" class="pro-image-front" style="width: 350px; height: 335px">
+										<img src="{{ segundoproducto.image.url }}" alt="" class="pro-image-back" style="width: 350px; height: 335px">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="{% url 'ventas:detail' segundoproducto.id %}" class="link-product-add-cart">Ver Producto</a>
+												</div>
+											</div>
+											<span class="product-new-top"></span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="{% url 'ventas:detail' segundoproducto.id %}">{{ segundoproducto.title }}</a></h4>
+										<div class="item-info-product ">
+									
+										{% if segundoproducto.discount_price %}
+										<div class="info-product-price">
+											<span class="item_price">${{ segundoproducto.discount_price }}</span>
+                      {% endif %}
+											<del>${{ segundoproducto.price }}</del>
+										</div>
+									{% if not request.user.is_staff %}
+									<a href="{% url 'ventas:detail' segundoproducto.id %}"><i   style="width: 50px; font-size: 40px; color: #002961;" class="fa fa-cart-plus" aria-hidden="true"></i></a>
+									
+
+									{% endif %}
+														
+																			
+									</div>
+										
+														
+																			
+									</div>
+								</div>
+							</div>
+							</div>
+                       	
+
+																			
+									</div>
+									{% endfor %}
+									{% else %}
+				<h1 style="text-align: center; color: #D88416;">No se encuentran prodcutos dsponibles</h1>
+				{% endif %}
+
+
+
+								<div class="clearfix"> </div>
+
+
+
+</div>
+
+
+<br>
+
+<br>
+
+<div style="text-align: center; justify-content:center; ">
+	
+	
+
+
+
+									<span class="step-links" style="text-align: center;">
+        {% if page_obj.has_previous %}
+            <a class="btn btn-success"  href="?page=1">&laquo; Primero</a>
+            <a  class="btn btn-success"  href="?page={{ page_obj.previous_page_number }}">Previo</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-warning" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+            <a class="btn btn-warning"  href="?page={{ page_obj.paginator.num_pages }}">Ultima &raquo;</a>
+        {% endif %}
+    </span>
+	</div>
+					<!--//slider_owl-->
+		       
+
+
+
+
+{% endblock content %}

@@ -1,41 +1,188 @@
-{% extends "base.html" %}
+{% extends "usuario/Productdetail.html" %}
+{% load static %}
 
-{% block content %}
-  <main>
+
+ 
+
+
+{% block content %} 
+<style >
+    *{
+        margin: 0;
+        padding: :0;
+        border: 0;
+        box-sizing: border-box;
+    }
+
+
+    body {
+
+    background: #fafafa url(https://jackrugile.com/images/misc/noise-diagonal.png);
+    color: #444;
+    font: 100%/30px 'Helvetica Neue', helvetica, arial, sans-serif;
+    text-shadow: 0 1px 0 #fff;
+     box-sizing: border-box;
+}
+
+strong {
+    font-weight: bold; 
+     box-sizing: border-box;
+}
+
+em {
+    font-style: italic; 
+     box-sizing: border-box;
+}
+
+table {
+    background: #f5f5f5;
+    border-collapse: separate;
+    box-shadow: inset 0 1px 0 #fff;
+    font-size: 20px;
+    line-height: 24px;
+   
+    text-align: left;
+    max-width: 100%;
+    
+    
+}   
+
+th {
+    background: url(https://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
+    border-left: 1px solid #555;
+    border-right: 1px solid #777;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #333;
+    box-shadow: inset 0 1px 0 #999;
+    color: #fff;
+  font-weight: bold;
+    padding: 10px 15px;
+    position: relative;
+    text-shadow: 0 1px 0 #000;  
+     box-sizing: border-box;
+}
+
+th:after {
+    background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+    content: '';
+    display: block;
+    height: 25%;
+    left: 0;
+    
+    position: absolute;
+    top: 25%;
+    width: 100%;
+     box-sizing: border-box;
+}
+
+th:first-child {
+    border-left: 1px solid #777;    
+    box-shadow: inset 1px 1px 0 #999;
+     box-sizing: border-box;
+}
+
+th:last-child {
+    box-shadow: inset -1px 1px 0 #999;
+     box-sizing: border-box;
+}
+
+td {
+    border-right: 1px solid #fff;
+    border-left: 1px solid #e8e8e8;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 10px 15px;
+    position: relative;
+    transition: all 300ms;
+     box-sizing: border-box;
+}
+
+td:first-child {
+    box-shadow: inset 1px 0 0 #fff;
+     box-sizing: border-box;
+}   
+
+td:last-child {
+    border-right: 1px solid #e8e8e8;
+    box-shadow: inset -1px 0 0 #fff;
+     box-sizing: border-box;
+}   
+
+tr {
+    background: url(https://jackrugile.com/images/misc/noise-diagonal.png); 
+     box-sizing: border-box;
+}
+
+tr:nth-child(odd) td {
+    background: #f1f1f1 url(https://jackrugile.com/images/misc/noise-diagonal.png); 
+     box-sizing: border-box;
+}
+
+tr:last-of-type td {
+    box-shadow: inset 0 -1px 0 #fff; 
+     box-sizing: border-box;
+}
+
+tr:last-of-type td:first-child {
+    box-shadow: inset 1px -1px 0 #fff;
+     box-sizing: border-box;
+}   
+
+tr:last-of-type td:last-child {
+    box-shadow: inset -1px -1px 0 #fff;
+     box-sizing: border-box;
+}   
+
+tbody:hover td {
+    color: transparent;
+    text-shadow: 0 0 3px #aaa;
+     box-sizing: border-box;
+}
+
+tbody:hover tr:hover td {
+    color: #444;
+    text-shadow: 0 1px 0 #fff;
+     box-sizing: border-box;
+}
+</style>
+
+<main>
+
     <div class="container">
 
     <div class="table-responsive text-nowrap">
-    <h2>Resumen de la orden</h2>
+    <h2 style="color: #D88416;">Resumen de la orden</h2>
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col"> Titulo de Item </th>
-            <th scope="col">Precio</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Total Precio Items</th>
+            <th scope="col" style="color: white;">#</th>
+            <th scope="col" style="color: white;"> Titulo de Item </th>
+            <th scope="col" style="color: white;">Precio</th>
+            <th scope="col" style="color: white;">Cantidad</th>
+            <th scope="col" style="color: white;">Total </th>
         </tr>
         </thead>
         <tbody>
         {% for order_item in object.roducto.all %}
         <tr>
-            <th scope="row">{{ forloop.counter }}</th>
+            <th scope="row" style="color: white;">{{ forloop.counter }}</th>
             <td>{{ order_item.producto.title }}</td>
-            <td>{{ order_item.producto.price }}</td>
+            <td>{{ order_item.producto.price }}</td> 
             <td>
-                <a href="{% url 'carro:restar' order_item.producto.id %}"><i class="fas fa-minus mr-2"></i></a>
+    
+                <a href="{% url 'carro:restar' order_item.producto.id %}"><i class="fa fa-minus" aria-hidden="true"></i></a>
                 {{ order_item.quantity}}
-                <a href="{% url 'carro:agregar' order_item.producto.id %}"><i class="fas fa-plus ml-2"></i></a>
+                <a href="{% url 'carro:agregar' order_item.producto.id %}"><i class="fa fa-plus" aria-hidden="true"></i></a>
             </td>
-            <td>
-            {% if order_item.item.discount_price %}
+            <td> 
+            {% if order_item.producto.discount_price %}
                 ${{ order_item.get_total_discount_item_price }}
                 <span class="badge badge-primary">Ahorro ${{ order_item.get_amount_saved }}</span>
             {% else %}
                 ${{ order_item.get_total_item_price }}
             {% endif %}
-            <a style='color: red;' href="{% url 'carro:restar' order_item.producto.id %}">
-                <i class="fas fa-trash float-right"></i>
+            <a style='color: red;' href="{% url 'carro:eliminar' order_item.producto.id %}">
+                <i class="fa fa-trash" aria-hidden="true"></i>
             </a>
             </td>
         </tr>
@@ -62,8 +209,8 @@
         </tr>
         <tr>
             <td colspan="5">
-            <a class='btn btn-warning float-right ml-2' href='/checkout/'>Realizar Compra</a>
-            <a class='btn btn-primary float-right' href='/'>Continue Comprando</a>
+            <a onclick="envio({{var_envio_whatsapp}});" class='btn btn-warning float-right ml-2' href="{% url 'ventas:envio_whatsapp' %}">Realizar Compra</a>
+            <a  class='btn btn-primary float-right' href="{% url 'ventas:articulos'%}">Continue Comprando</a>
             </td>
         </tr>
         {% endif %}
@@ -75,6 +222,91 @@
     </div>
   </main>
 
+
+   <h1>{{var_envio_whatsapp}}</h1>
+
+
+
+
+
+   <script type="text/javascript">
+    
+
+    function envio(var_envio_whatsapp){
+
+        $( document ).ready(function() {
+            console.log(var_envio_whatsapp)
+            console.log(var_envio_whatsapp["Cod_factura"])
+            console.log(var_envio_whatsapp["cliente"])
+            console.log(var_envio_whatsapp["cliente2"])
+            console.log(var_envio_whatsapp["Cantidad"])
+            console.log(var_envio_whatsapp["nombre_producto"])
+            console.log(var_envio_whatsapp["precio_total"])
+
+            var dato1 = var_envio_whatsapp["Cod_factura"]
+            var dato2 = var_envio_whatsapp["cliente"]
+            var dato3 = var_envio_whatsapp["cliente2"]
+            var dato4 =var_envio_whatsapp["Cantidad"]
+            var dato5 = var_envio_whatsapp["nombre_producto"]
+            var dato6 = var_envio_whatsapp["precio_total"]
+         
+
+            url= 'https://wa.me/5804125616872?text=*Multimotores GEMCA*%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20 ' +
+                        '*Cod factura* : ' + dato1.toString() + '%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20 ' +
+                       '*Cliente* : ' + var_envio_whatsapp["cliente"] + '%20' + var_envio_whatsapp["cliente2"] + '%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20 ' +
+                      ' *Cantidad de Productos* : ' + dato4.toString()  + '%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20 ' +
+                      '*Nombre de los Productos* :' + var_envio_whatsapp["nombre_producto"] + '%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20' +
+                      '*Precio Total* :' + dato6.toString() + '%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'
+                      
+            window.open(url, '_blank');
+
+        });
+
+    }
+
+
+
+</script> 
+
+
 {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--{% for order_item in object.roducto.all %}
+                    <div class="text-95 text-secondary-d3">
+                        <div class="row mb-2 mb-sm-0 py-25">
+                            <div class="d-none d-sm-block col-1">{{ forloop.counter }}</div>
+                            <div class="col-9 col-sm-5">{{ order_item.producto.title }}</div>
+                            <div class="d-none d-sm-block col-2">{{ order_item.producto.price }}</div>
+                            <div class="d-none d-sm-block col-2 text-95">{{ order_item.quantity}}</div>
+                            <div class="col-2 text-secondary-d2">${{ order_item.get_total_item_price }}</div>
+                        </div>
+
+                        
+
+                    <div class="row border-b-2 brc-default-l2"></div>
+
+                    {% endfor %}--> 
+
+
+
+
 
 

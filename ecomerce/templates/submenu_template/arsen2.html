@@ -1,0 +1,120 @@
+{% extends "usuario/Productdetail.html" %}
+{% load staticfiles %}
+
+
+
+
+{% block content %}
+<div class="w3_agile_latest_arrivals">
+			<h3 class="wthree_text_info" style="color: #D88416;">Catalogo  <span style="color: #D88416;"> de Productos </span></h3>
+<div style="text-align: center; justify-content:center; ">
+			<select  class="modal-title" style="text-align: center;" name="select">
+					<option value="value1"> Selecciona Una marca</option>
+  					<a href="#"><option value="value2"> Bera</option></a>
+  					<option value="value3" >Empire</option>
+  					<option value="value4">Otro</option>
+  					<option value="value4">Otro</option>
+  					<option value="value4">Otro</option>
+				</select>
+			</div>
+<div class="resp-tabs-container">
+				<br>
+				<br>
+
+<form method="POST">
+	
+
+
+
+			
+				{% if dato %}
+					 
+					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+				{% for segundoproducto in dato %}
+					  <div class="col-md-3 product-men single">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ segundoproducto.image.url }}" alt="" class="pro-image-front">
+										<img src="{{ segundoproducto.image.url }}" alt="" class="pro-image-back">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="{% url 'ventas:detail' segundoproducto.id %}" class="link-product-add-cart">Ver Producto</a>
+												</div>
+											</div>
+											<span class="product-new-top"></span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="single.html">{{ segundoproducto.title }}</a></h4>
+										<div class="item-info-product ">
+									
+										{% if segundoproducto.discount_price %}
+										<div class="info-product-price">
+											<span class="item_price">${{ segundoproducto.discount_price }}</span>
+                      {% endif %}
+											<del>${{ segundoproducto.price }}</del>
+										</div>
+									{% if not request.user.is_staff %}
+									<a href="{% url 'ventas:detail' segundoproducto.id %}"><i   style="width: 50px; font-size: 30px; color:  #002961;" class="fa fa-cart-plus" aria-hidden="true"></i></a>
+									
+
+									{% endif %}
+														
+																			
+									</div>
+										
+														
+																			
+									</div>
+								</div>
+							</div>
+							</div>
+                       	
+
+																			
+									</div>
+									{% endfor %}
+								<div class="clearfix"> </div>
+
+
+				{% else %}
+				<h1 style="text-align: center; color: #D88416;">No se encuentran prodcutos dsponibles</h1>
+				{% endif %}
+	
+
+</div>
+
+
+<br>
+
+<br>
+
+<div style="text-align: center; justify-content:center; ">
+	
+	
+
+
+
+									<span class="step-links" style="text-align: center;">
+        {% if page_obj.has_previous %}
+            <a class="btn btn-success"  href="?page=1">&laquo; Primero</a>
+            <a  class="btn btn-success"  href="?page={{ page_obj.previous_page_number }}">Previo</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-warning" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+            <a class="btn btn-warning"  href="?page={{ page_obj.paginator.num_pages }}">Ultima &raquo;</a>
+        {% endif %}
+    </span>
+	</div>
+					<!--//slider_owl-->
+		       
+
+
+
+
+{% endblock content %}

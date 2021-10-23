@@ -8,10 +8,10 @@ from .views import (agregar_producto,
 
 	)
 
-
+#app_name='carro1'
 urlpatterns = [
 
-
+ 
 	
 	path('agregar/<int:producto_id>/' , agregar_producto , name='agregar'),
 	path('eliminar/<int:producto_id>/' , eliminar_producto , name='eliminar'),

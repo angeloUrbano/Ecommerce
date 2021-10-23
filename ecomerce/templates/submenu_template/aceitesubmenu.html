@@ -1,0 +1,74 @@
+{% load staticfiles %}
+
+
+<head>
+    
+    <style type="text/css">
+        
+        #datos{
+
+          margin-left: 30px;
+          color: #D88416;
+        }
+
+
+    </style>
+
+
+</head>
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title" style="text-align: center; color: #D88416;" > Detalles Aceites</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+
+            <div class="row justify-content-md-center">
+            <div class="col-6 pt-3 pb-3" id="profile-box">
+                
+              <div class="card-title py-3">
+            <form action="{% url 'ventas:create_articulo' %}" method="POST" enctype="multipart/form-data">
+             
+
+            <div class="modal-body modal-body-sub_agile">
+                <div class="col-md-8 modal_body_left modal_body_left1">
+                <div class="form-grup">
+
+
+
+   <div id="datos">
+                    
+	                           
+                                       <ul >
+                                            <li><a style="color: #002961; " href="{% url 'datos_submenu:aceite1' %}">Shell 20W50 pote amarillo</a></li>
+                                            <li><a style="color: #002961; " href="{% url 'datos_submenu:aceite2' %}">Motoul 3000 20W50</a></li>
+                                            <li><a style="color: #002961; " href="{% url 'datos_submenu:aceite3' %}">Shell 10W40 pote azul</a></li>
+                                            <li><a style="color: #002961; " href="{% url 'datos_submenu:aceite4' %}">Motoul 5100 15W50</a></li>
+                                            <li><a style="color: #002961; " href="{% url 'datos_submenu:aceite5' %}">Castrol 20W50</a></li>
+
+
+
+
+                                            
+    </ul>
+
+   </div>                             
+</div>
+
+</div>
+                            
+</div>
+                
+
+            </div>
+            
+             </div>   
+                
+
+            
+
+            </form>

@@ -5,3 +5,6 @@ from usuarios.models import *
 
 
 admin.site.register(Product_of_Interest)
+admin.site.register(User)
+
+

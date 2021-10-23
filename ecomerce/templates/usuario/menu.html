@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+
+	nav ul{
+
+		list-style: none;
+		padding: 0;
+	}
+
+	nav li{
+		line-height: 3rem;
+		position: relative;
+	}
+	nav li ul {
+		position: absolute;
+	}
+
+
+
+	nav a{
+		color: #ddd;
+		display: block;
+		padding: 0 2.5em;
+
+		text-decoration: none;
+		transition: .4s;
+	}
+
+	nav a:hover{
+		background: : rgba(0,0,0,.5);
+	}
+
+
+	
+
+	
+
+
+
+	
+	nav > ul {
+	background : #333;
+	display: table;
+	width: 100%;
+
+
+	}
+
+
+	nav > ul > li{
+		float: left;
+
+
+	}
+
+
+
+
+	nav li li{
+		background: #222;
+		width: 200%;
+		max-height: 0;
+		overflow: hidden;
+		transition: all .6s;
+	}
+
+
+	nav li:hover  > ul > li{
+		max-height: 500px;
+		overflow: visible;
+	}
+
+
+	nav > ul > li > ul{
+		top: 100%;
+	}
+
+
+	nav ul  ul  ul{
+		left: 100%;
+		top: 0;
+	}
+
+
+	
+
+
+</style>
+
+
+</head>
+
+<body>
+
+				<nav>
+	
+					<ul>
+						<li><a href="">Submenu1</a></li>
+						<li><a href="">Submenu2</a>
+
+							<ul>
+								<li><a href="">subiten</a></li>
+								<li><a href="">subiten</a>
+
+									<ul>
+
+										<li><a href="">3</a></li>
+										<li><a href="">3</a></li>
+										<li><a href="">3</a></li>
+										<li><a href="">3</a></li>
+									</ul>
+
+
+
+								</li>
+								<li><a href="">subiten</a>
+
+
+									<ul>
+
+										<li><a href="">3</a></li>
+										<li><a href="">3</a></li>
+										<li><a href="">3</a></li>
+										<li><a href="">3</a></li>
+									</ul>
+
+
+								</li>
+								<li><a href="">subiten</a></li>
+
+							</ul>
+
+						</li>
+
+						<li><a href="">Submenu3</a></li>
+						<li><a href="">Submenu4</a></li>
+					</ul>
+
+
+
+				</nav>
+
+
+					
+				
+				
+
+
+
+
+</body>
+</html>

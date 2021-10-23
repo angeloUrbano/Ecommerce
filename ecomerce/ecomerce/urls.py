@@ -19,21 +19,27 @@ from django.urls import path , include
 from usuarios import views as users_views
 from django.conf.urls.static import static
 from django.conf import settings
-from vestas_usuario import views
+from vestas_usuario import views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('prueba/', include(('vestas_usuario.urls' , 'usuario'))),
-     path('prueba2/', include(('carro.urls' , 'carro'))),
+    path('', include(('vestas_usuario.urls' , 'usuario'))),
+    path('prueba2/', include(('carro.urls' , 'carro'))),
+    path('prueba3/', include(('usuarios.urls' , 'token'))),
+    path('prueba4/', include(('submenu.urls' , 'submenu'))),
     #path('' ,inicio.as_view(), name = "index"),
     path('login/' , users_views.login_view , name = 'login'),
 
     path('logout/' , users_views.logout_view , name = 'logout'),
-    path('signup/' , users_views.signup , name = 'signup'),
+    path('signup/' , users_views.signup.as_view() , name = 'signup'),
     path('home/', views.list_article.as_view(), name='home'),
+    path('profile' , users_views.update_profile , name = 'update_profile'),
+
+    path('accounts/', include('allauth.urls')),
 
 
 
 
 ]+  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+ 

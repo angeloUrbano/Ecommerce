@@ -1,0 +1,1171 @@
+{% load staticfiles %}
+{% load cart_template_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+<title> Multimotores GECMA | Producto </title>
+<!--/tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Elite Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+
+<meta property="og:title" content="Probando meta etiqueta" />
+<meta property="og:type" content="product" />
+<meta property="og:url" content="https://pruebamultimotoresgemca.herokuapp.com/detal/{{object.id}}" />
+<meta property="og:image" content="https://pruebamultimotoresgemca.herokuapp.com/static/images/logo_sesion.jpg" />
+<meta property="og:description" content="aqui se debe colocar una descripcion" />
+<meta property="og:site_name" content="Multimotores GEMCA" />
+<meta property="product:price:amount" content="30" />
+<meta property="product:price:currency" content="EUR" />
+
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>  
+<!-- //tags -->
+
+{% block extra_css %}
+
+
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen" />
+<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet"> 
+<link href="{% static 'css/easy-responsive-tabs.css'%}" rel='stylesheet' type='text/css'/>
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+
+<!-- //for bootstrap working -->
+
+<style type="text/css">
+	
+
+
+#nueva_lista{
+list-style: none; /* Quitamos los marcadores */
+padding: 0; /* Quitamos el padding por defecto de la lista */
+margin-left: 10px; /* Separamos la lista de la izquierda */
+}
+
+
+#nueva_lista2{
+list-style: none; /* Quitamos los marcadores */
+padding: 0; /* Quitamos el padding por defecto de la lista */
+margin-left: 10px; /* Separamos la lista de la izquierda */
+}
+
+
+#l::before { /* Añadimos contenido antes de cada elemento de la lista */
+content: "\2022"; /* Insertamos el marcador */
+padding-right: 8px; /* Establecemos el espacio entre las viñetas y el list item */
+color: #2fda51; /* Coloreamos la viñeta */
+}
+</style>
+
+
+
+<style type="text/css">
+
+	#nav ul{
+
+		list-style: none;
+		padding: 0;
+	}
+
+	#nav li{
+		line-height: 3rem;
+		position: relative;
+	}
+	#nav li ul {
+		position: absolute;
+	}
+
+
+
+	#nav a{
+		color: #ddd;
+		display: block;
+		padding: 0 2.5em;
+
+		text-decoration: none;
+		transition: .4s;
+	}
+
+	#nav a:hover{
+		background: : rgba(0,0,0,.5);
+		color: #002961;
+	}
+
+
+	
+
+	
+
+
+
+	
+	#nav > ul {
+	background : #000000;
+	display: table;
+	width: 250px;
+
+
+	}
+
+
+	#nav > ul > li{
+		float: left;
+
+
+	}
+
+
+
+
+	#nav li li{
+		background: #000000;
+		width: 200%;
+		max-height: 0;
+		overflow: hidden;
+		transition: all .6s;
+	}
+
+
+	#nav li:hover  > ul > li{
+		max-height: 500px;
+		overflow: visible;
+	}
+
+
+	#nav > ul > li > ul{
+		top: 100%;
+	}
+
+
+	#nav ul  ul{
+		left: 100%;
+		top: 0;
+	}
+
+	#image{
+		position: relative;
+		right: 10%;
+
+
+	}
+
+
+	
+
+
+</style>
+
+</head>
+<body>
+	
+ </a> 
+<!-- header -->
+<div class="header" id="home">
+	<div class="container">
+		<ul>
+		    <li> <a style="color: #000;" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Iniciar Sesion </a></li>
+			<li> <a style="color: #000;" href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> crea Una cuenta</a></li>
+			<li style="color: #000;"><i class="fa fa-phone" aria-hidden="true"></i> LLamar: 01234567898</li>
+			<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a style="color: #000;" href="mailto:info@example.com">Multimotores@example.com</a></li>
+		</ul>
+	</div>
+</div>
+<!-- //header -->
+<!-- header-bot -->
+<div class="header-bot">
+	<div class="header-bot_inner_wthreeinfo_header_mid">
+		<div class="col-md-4 header-middle">
+			<form action="{% url 'ventas:ListCatalogoo'%}" method="get">
+					<input type="search" name="buscar" placeholder="Buscar Producto..." required="">
+					<input type="submit" value=" ">
+				<div class="clearfix"></div>
+			</form>
+		</div>
+		<!-- header-bot -->
+			<div class="col-md-4 logo_agile">
+				<h1><a  style="font-size: 45px; max-width: 19px;color: #000; " href="{% url 'ventas:articulos'%}"><span style="font-size: 45px;">M</span style="color: #000;">ultimotores<i class="fa fa-shopping-bag top_logo_agile_bag" aria-hidden="true"><span style="font-size: 20px; background:white; color: black ">GEMCA</span></i></a></h1>
+			</div>
+        <!-- header-bot -->
+		<div class="col-md-4 agileits-social top_content">
+						<ul  style="margin-left: 40;"class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
+						                                   <li class="share"><i style="font-size: 30px; color: #002961;  margin-left: 50px;" class="fa fa-share-alt" aria-hidden="true"></i> </li>
+															<li><a href="https://www.facebook.com/sharer.php?u=https://pruebamultimotoresgemca.herokuapp.com/" target="_blank&t=mi pagina" class="facebook">
+																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
+															<li><a href="https://api.whatsapp.com/send?text=https://pruebamultimotoresgemca.herokuapp.com/" target="_blank&t=mi pagina" class="twitter"> 
+																  <div class="front"><i class="fa fa-whatsapp" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-whatsapp" aria-hidden="true"></i></div></a></li>
+															
+															
+															
+														</ul>
+
+
+
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!-- //header-bot -->
+<!-- banner -->
+
+
+
+
+<div class="ban-top">
+	<div class="container">
+		<div class="top_nav_left">
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+				  <ul class="nav navbar-nav menu__list">
+					<li class="active menu__item menu__item--current"><a class="menu__link" href="{% url 'ventas:articulos'%}">Principal <span class="sr-only">(current)</span></a></li>
+					
+					{% if not request.user.is_authenticated %} 
+					
+
+					<li class=" menu__item"><a class="menu__link" href="{% url 'login' %}">Iniciar sesion</a></li>
+					<!--
+					<li class=" menu__item"><a class="menu__link" href="{% url 'login'%}">Login</a></li>-->
+
+					<li class=" menu__item"><a class="menu__link" href="{% url 'signup' %}">Registrate</a></li>
+
+						{% endif%}
+
+
+	
+
+
+						
+
+					
+
+
+
+
+
+
+<li class="dropdown menu__item">
+						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="agile_inner_drop_nav_info">
+									
+									<div class="col-sm-3 multi-gd-img">
+
+										<nav id="nav">
+											
+										
+										<ul class="multi-column-dropdown">
+
+
+
+
+
+
+											<li><a  onclick="modal_foton('{% url 'datos_submenu:sub_fotonn'   %}')">Triciclos </a>
+
+												
+
+											</li>
+											<li><a onclick="bicicleta_electrica('{% url 'datos_submenu:bicicleta_electricasub'   %}')">Bicicleta Electrica</a>
+
+
+
+
+
+
+											</li>
+											<li><a onclick="motos_electrica('{% url 'datos_submenu:moto_electricasub'   %}')">Moto Electrica</a>
+
+											
+
+
+
+											</li>
+											<li><a onclick="motos_clasica('{% url 'datos_submenu:moto_clasicasub'   %}')">Moto Clasica</a>
+
+
+
+
+											</li>
+
+
+
+											<li><a onclick="otras_marcas_moto('{% url 'datos_submenu:Otras_marcas_motosub'   %}')">Otras marcas </a>
+
+												
+
+											</li>
+											<li><a onclick="aceite('{% url 'datos_submenu:aceitesub'   %}')">Aceites</a>
+
+
+												
+
+
+											</li>
+
+
+
+
+
+
+
+
+
+
+
+											<li><a onclick="repuesto('{% url 'datos_submenu:repuestosub'   %}')">Repuestos</a>
+
+
+											
+											
+
+
+
+											</li>
+
+
+
+
+
+										</ul>
+
+
+										</nav>
+									</div>
+									
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+					</li>
+				
+					
+					<li class=" menu__item"><a class="menu__link" href="{% url 'ventas:contactame'%}">Contacto</a></li>
+
+
+					{% if request.user.is_authenticated %}
+					
+
+					<li class=" menu__item"><a class="menu__link" href="{% url 'logout' %}">Cerrar sesion</a></li>
+					
+
+						{% endif%}
+				  </ul>
+				</div>
+			  </div>
+			</nav>	
+		</div>
+			{% if  not request.user.is_staff %}
+		{% if request.user.is_authenticated %}
+		<div class="top_nav_right">
+			<div class="wthreecartaits wthreecartaits2 cart cart box_1"> 
+				<a   href="{% url 'carro:order-summary' %}" class="cart-angelo"  >
+						
+			
+
+						<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+
+						<span class="badge red z-depth-1 mr-1" style="background-color: red"> {{ request.user |cart_item_count }} </span>
+									</a>
+					{% endif%}  
+					{% endif%}
+  
+						</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>  
+
+<!-- //banner-top -->     
+
+
+
+
+{% load account socialaccount %}
+
+
+
+{% get_providers as socialaccount_providers %}
+
+{% if socialaccount_providers %}
+
+
+<div class="socialaccount_ballot">
+
+  <ul class="socialaccount_providers">
+   
+  </ul>
+
+ 
+
+</div>
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+{% else %}
+
+{% endif %}
+
+
+<!-- Modal1 -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+						<div class="modal-body modal-body-sub_agile">
+						<div class="col-md-8 modal_body_left modal_body_left1">
+						<h3 class="agileinfo_sign">Iniciar <span>Sesion</span></h3>
+									<form action="{% url 'login'%}" method="post">
+										{% csrf_token%}
+							<div class="styled-input agile-styled-input-top">
+								<input   type="text" placeholder="email" name="email">
+								<label>Correo</label>
+								<span></span>
+							</div>
+							<div class="styled-input">
+								<input type="password" name="password" required=""> 
+								<label>Contraseña</label>
+								<span></span>
+							</div> 
+							<input type="submit" value="Iniciar Sesión">
+						</form>
+						  <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
+															<li><a href="{% provider_login_url 'facebook'  method='js_sdk' %}" class="facebook">
+																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
+															<li><a href="{% provider_login_url 'google' %}" class="twitter"> 
+																  <div class="front"><i class="fa fa-google" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-google" aria-hidden="true"></i></div></a></li>
+														</ul>
+														<div class="clearfix"></div>
+														<p><a href="#" data-toggle="modal" data-target="#myModal2" > Aun No Posee  Una Cuenta ?</a></p>
+
+						</div>
+						<div class="col-md-4 modal_body_right modal_body_right1">
+							<img src="{% static 'images/logo_sesion.jpg' %}" alt=" "/>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<!-- //Modal content-->
+			</div>
+		</div>
+<!-- //Modal1 -->
+<!-- Modal2 -->
+		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+						<div class="modal-body modal-body-sub_agile">
+						<div class="col-md-8 modal_body_left modal_body_left1">
+						<h3 class="agileinfo_sign">Crear una <span>Cuenta/span></h3>
+						 <form method="POST" action="{% url 'signup'%}">
+						 	{% csrf_token %}
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" name="username" required="">
+								<label>Name</label>
+								<span></span>
+							</div>
+							<div class="styled-input">
+								<input type="email" name="email" required=""> 
+								<label>Email</label>
+								<span></span>
+							</div> 
+							<div class="styled-input">
+								<input type="password" name="password" required=""> 
+								<label>Password</label>
+								<span></span>
+							</div> 
+
+							<div class="styled-input">
+								<input type="password" name="password_confirmation" required=""> 
+								<label>Confirmar Password</label>
+								<span></span>
+							</div> 
+							
+							<input type="submit" value="Crear Cuenta">
+						</form>
+						  <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
+															<li><a href="{% provider_login_url 'facebook'  method='js_sdk' %}" class="facebook">
+																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
+															<li><a href="{% provider_login_url 'google' %}" class="twitter"> 
+																  <div class="front"><i class="fa fa-google" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-google" aria-hidden="true"></i></div></a></li>
+														</ul>
+														<div class="clearfix"></div>
+														<p><a href="#">Al hacer clic en registrarse, acepto sus términos</a></p>
+
+						</div>
+						<div class="col-md-4 modal_body_right modal_body_right1">
+							<img src="{% static 'images/logo_sesion.jpg' %}" alt=" "/>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<!-- //Modal content-->
+			</div>
+		</div>
+<!-- //Modal2 -->
+<!--/single_page-->
+       <!-- /banner_bottom_agile_info -->
+<div class="page-head_agile_info_w3l">
+		<div class="container">
+			<h3><span> </span></h3>
+			<!--/w3_short-->
+				 <div class="services-breadcrumb">
+						<div class="agile_inner_breadcrumb">
+
+						   <ul class="w3_short">
+								<li><a href="{% url 'ventas:articulos'%}">Principal</a><i>|</i></li>
+								
+							</ul>
+						 </div>
+				</div>
+	   <!--//w3_short-->
+	</div>
+</div>
+
+  <!-- banner-bootom-w3-agileits -->
+  {% endblock extra_css %}
+
+  {% block content %}
+  
+<div class="banner-bootom-w3-agileits">
+	<div class="container">
+	     <div class="col-md-4 single-right-left ">
+			<div class="grid images_3_of_2">
+				<div class="flexslider">
+					
+					<ul class="slides">
+						<li data-thumb="{{ object.image.url }}">
+							<div class="thumb-image"> <img src="{{ object.image.url }}" data-imagezoom="true" class="img-responsive"> </div>
+						</li>
+						<li data-thumb="{{ object.image2.url }}">
+							<div class="thumb-image"> <img src="{{ object.image2.url }}" data-imagezoom="true" class="img-responsive"> </div>
+						</li>	
+						<li data-thumb="{{ object.image3.url }}">
+							<div class="thumb-image"> <img src="{{ object.image3.url }}" data-imagezoom="true" class="img-responsive"> </div>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>	
+			</div>
+		</div>
+		<div class="col-md-8 single-right-left simpleCart_shelfItem">
+					<h3>{{ object.title }}</h3>
+					{% if object.discount_price %}
+					<p><span class="item_price">${{ object.discount_price }}</span>
+					{% endif %} <del>- ${{ object.price }}</del></p>
+				
+					
+					<br>
+					<div class="color-quality">
+
+						<div class="color-quality-right">
+							<h5  style="color:#e2610c;">Descripción:</h5>
+							<ul id="nueva_lista">
+								<li id="l">{{object.description}}</li>
+								
+								
+
+							</ul>
+						</div>
+						<br>
+
+
+
+						<div class="color-quality-right">
+							<h5  style="color:#e2610c;">Caracteristicas:</h5>
+							<ul id="nueva_lista2">
+								<li id="l">{{object.detalle}}</li>
+								<li id="l">{{object.detalle2}}</li>
+								<li id="l">{{object.detalle3}}</li>
+								<li id="l">{{object.detalle4}}</li>
+								
+
+							</ul>
+						</div>
+					
+					</div>
+					<br>
+					{% if not request.user.is_staff %}
+					<a href="{% url 'ventas:articulos'%}"><i style="width: 50px; font-size: 30px; color: #D88416;" class="fa fa-undo" aria-hidden="true"></i></a>
+
+							<a href="{% url 'carro:agregar' object.id %}"><i   style="width: 50px; font-size: 30px; color:  #002961;" class="fa fa-cart-plus" aria-hidden="true"></i></a>
+
+							
+							
+					{% endif %}
+
+
+					<br>
+							
+
+
+							
+
+															
+							
+					<ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
+						                                   <li class="share"><i style="font-size: 30px; color: #002961;  margin-left: 50px;" class="fa fa-share-alt" aria-hidden="true"></i> </li>
+															<li><a href="https://www.facebook.com/sharer.php?u=https://pruebamultimotoresgemca.herokuapp.com/detal/{{object.id}}" target="_blank&t=mi pagina" class="facebook">
+																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
+															<li><a href="https://api.whatsapp.com/send?text=https://pruebamultimotoresgemca.herokuapp.com/detal/{{object.id}}" target="_blank&t=mi pagina" class="twitter"> 
+																  <div class="front"><i class="fa fa-whatsapp" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-whatsapp" aria-hidden="true"></i></div></a></li>
+															
+					
+		      </div>
+
+
+	 			<div class="clearfix"> </div>
+	 			</div>
+							</div>
+				<!-- /new_arrivals --> 
+	
+	<!-- //new_arrivals --> 
+	  	<!--/slider_owl-->
+	
+			<div class="w3_agile_latest_arrivals">
+			<h3 class="wthree_text_info" style="color: #D88416;">Productos  <span style="color: #D88416;">Sugeridos</span></h3>
+
+
+
+
+
+			
+			<div class="resp-tabs-container">
+
+					 
+					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+				{% for segundoproducto in info|slice:":9" %}
+					  <div class="col-md-3 product-men single">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ segundoproducto.image.url }}" alt="" class="pro-image-front" style="width: 350px; height: 335px">
+										<img src="{{ segundoproducto.image.url }}" alt="" class="pro-image-back" style="width: 350px; height: 335px">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="{% url 'ventas:detail' producto.id %}" class="link-product-add-cart">Ver Producto</a>
+												</div>
+											</div>
+											<span class="product-new-top"></span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="#">{{ segundoproducto.title }}</a></h4>
+										{% if segundoproducto.discount_price %}
+										<div class="info-product-price">
+											<span class="item_price">${{ segundoproducto.discount_price }}</span>
+                      {% endif %}
+											<del>${{ segundoproducto.price }}</del>
+										</div>
+									{% if not request.user.is_staff %}
+									<a href="{% url 'ventas:detail' segundoproducto.id %}"><i   style="width: 50px; font-size: 30px; color: #002961;" class="fa fa-cart-plus" aria-hidden="true"></i></a>
+									
+
+									{% endif %}
+														
+																			
+									</div>
+								</div>
+							</div>
+							</div>
+                       	
+
+																			
+									</div>
+
+
+									
+
+									
+									{% endfor %}
+								
+							<div class="clearfix"> </div>
+					<!--//slider_owl-->
+		         </div>
+	        </div>
+ </div>
+<!--//single_page-->
+
+
+{% endblock content %}	
+{% block extra_js %}
+<!--/grids-->
+<div class="coupons">
+		<div class="coupons-grids text-center">
+			<div class="w3layouts_mail_grid">
+				<div class="col-md-3 w3layouts_mail_grid_left">
+					<div class="w3layouts_mail_grid_left1 hvr-radial-out">
+						<i class="fa fa-truck" aria-hidden="true"></i>
+					</div>
+					<div class="w3layouts_mail_grid_left2">
+						<h3>Envios</h3>
+						<p style="color: #000;">Envios a cualquier parte del pais</p>
+					</div>
+				</div>
+				<div class="col-md-3 w3layouts_mail_grid_left">
+					<div class="w3layouts_mail_grid_left1 hvr-radial-out">
+						<i class="fa fa-mobile" aria-hidden="true"></i>
+					</div>
+					<div class="w3layouts_mail_grid_left2">
+						<h3>24/7 Soporte</h3>
+						<p style="color: #000;">Brindamos atencion al cliente 24/7</p>
+					</div>
+				</div>
+				<div class="col-md-3 w3layouts_mail_grid_left">
+					<div class="w3layouts_mail_grid_left1 hvr-radial-out">
+						<i class="fa fa-credit-card" aria-hidden="true"></i>
+					</div>
+					<div class="w3layouts_mail_grid_left2">
+						<h3>Transacciones </h3>
+						<p style="color: #000;"> Realiza tus compras de forma segura </p>
+					</div>
+				</div>
+					<div class="col-md-3 w3layouts_mail_grid_left">
+					<div class="w3layouts_mail_grid_left1 hvr-radial-out">
+						<i class="fa fa-gift" aria-hidden="true"></i>
+					</div>
+					<div class="w3layouts_mail_grid_left2">
+						<h3>Descuentos</h3>
+						<p style="color: #000;" > Ofrecemos diferentes ofertas en productos</p>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+
+		</div>
+</div>
+<!--grids-->
+
+<!-- footer -->
+<div class="footer">
+	<div class="footer_agile_inner_info_w3l">
+		<div class="col-md-3 footer-left">
+			<h2><a style="color: #000;" href="{% url 'ventas:articulos'%}"><span >M</span style="color: #000;">Ultimotores GEMCA </a></h2>
+			<p style="color: #000;"> Lorem ipsum quia dolor
+			sit amet, consectetur, adipisci velit, sed quia non 
+			numquam eius modi tempora.</p>
+			<ul class="social-nav model-3d-0 footer-social w3_agile_social two">
+															<li class="share"><i style="font-size: 30px; color: #002961;  margin-left: 50px;" class="fa fa-share-alt" aria-hidden="true"></i> </li>
+															<li><a href="https://www.facebook.com/sharer.php?u=https://pruebamultimotoresgemca.herokuapp.com/" target="_blank&t=mi pagina" class="facebook">
+																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
+															<li><a href="https://api.whatsapp.com/send?text=https://pruebamultimotoresgemca.herokuapp.com/" target="_blank&t=mi pagina" class="twitter"> 
+																  <div class="front"><i class="fa fa-whatsapp" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-whatsapp" aria-hidden="true"></i></div></a></li>
+		</div>
+		<div class="col-md-9 footer-right">
+			<div class="sign-grds">
+				<div class="col-md-4 sign-gd">
+					<h4 style="color: #000;"> Nuestra <span style="color: #000;">Informacion</span> </h4>
+					<ul>
+						<li><a style="color: #000;" href="{% url 'ventas:articulos'%}">Pincipal</a></li>
+						
+						<li><a  style="color: #000;"href="{% url 'ventas:ListCatalogoo'%}"> Productos</a></li>
+						<li><a style="color: #000;" href="{% url 'ventas:contactame'%}">Contacto</a></li>
+					</ul>
+				</div>
+				
+				<div class="col-md-5 sign-gd-two">
+					<h4 style="color: #000;">Contactanos<span style="color: #000;"> A travez de</span></h4>
+					<div class="w3-address">
+						<div class="w3-address-grid">
+							<div class="w3-address-left">
+								<i class="fa fa-phone" aria-hidden="true"></i>
+							</div>
+							<div class="w3-address-right">
+								<h6 >Phone Number</h6>
+								<p>+1 234 567 8901</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="w3-address-grid">
+							<div class="w3-address-left">
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+							</div>
+							<div class="w3-address-right">
+								<h6 >Email Address</h6>
+								<p>Email :<a href="mailto:example@email.com"> mail@example.com</a></p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="w3-address-grid">
+							<div class="w3-address-left">
+								<i class="fa fa-map-marker" aria-hidden="true"></i>
+							</div>
+							<div class="w3-address-right">
+								<h6>Ubicaion</h6>
+								<p>Av Cedeño, calle 105 , valencia , Carabobo 
+								
+								</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 sign-gd flickr-post">
+					
+					<ul>
+						
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		
+
+		<div class="clearfix"></div>
+	</div>
+		
+	</div>
+</div>
+
+
+
+<!--modales de submenu-->
+
+										<div class="modal fade" id="modal_fotonn" role="dialog">
+											
+
+
+										</div>
+
+
+
+
+										<div class="modal fade" id="bicicleta_electricas" role="dialog">
+											
+
+
+										</div>
+
+
+
+
+										<div class="modal fade" id="motos_electricas" role="dialog">
+											
+
+
+										</div>
+
+
+
+										<div class="modal fade" id="motos_clasicas" role="dialog">
+											
+
+
+										</div>
+
+
+										<div class="modal fade" id="otras_marcas_motos" role="dialog">
+											
+
+
+										</div>
+
+
+										<div class="modal fade" id="aceites" role="dialog">
+											
+
+
+										</div>
+
+
+
+										<div class="modal fade" id="repuestos" role="dialog">
+											
+
+
+										</div>
+
+
+
+
+
+
+										<!--fin modales-->
+
+
+
+
+<!-- //footer -->
+
+<!-- login -->
+			<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content modal-info">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
+						</div>
+						<div class="modal-body modal-spa">
+							<div class="login-grids">
+								<div class="login">
+									<div class="login-bottom">
+										<h3>Sign up for free</h3>
+										<form>
+											<div class="sign-up">
+												<h4>Email :</h4>
+												<input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">	
+											</div>
+											<div class="sign-up">
+												<h4>Password :</h4>
+												<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+												
+											</div>
+											<div class="sign-up">
+												<h4>Re-type Password :</h4>
+												<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+												
+											</div>
+											<div class="sign-up">
+												<input type="submit" value="REGISTER NOW" >
+											</div>
+											
+										</form>
+									</div>
+									<div class="login-right">
+										<h3>Sign in with your account</h3>
+										<form>
+											<div class="sign-in">
+												<h4>Email :</h4>
+												<input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">	
+											</div>
+											<div class="sign-in">
+												<h4>Password :</h4>
+												<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+												<a href="#">Forgot password?</a>
+											</div>
+											<div class="single-bottom">
+												<input type="checkbox"  id="brand" value="">
+												<label for="brand"><span></span>Remember Me.</label>
+											</div>
+											<div class="sign-in">
+												<input type="submit" value="SIGNIN" >
+											</div>
+										</form>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<p>By logging in you agree to our <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+<!-- //login -->
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- js -->
+
+<script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js'%}"></script>
+<!-- //js -->
+<script src="{% static 'js/modernizr.custom.js'%}"></script>
+	<!-- Custom-JavaScript-File-Links --> 
+	<!-- cart-js -->
+	<script src="{% static 'js/minicart.min.js'%}"></script>
+<script>
+	// Mini Cart
+	paypal.minicart.render({
+		action: '#'
+	});
+
+	if (~window.location.search.indexOf('reset=true')) {
+		paypal.minicart.reset();
+	}
+</script>
+
+	<!-- //cart-js --> 
+	<!-- single -->
+<script src="{% static 'js/imagezoom.js'%}"></script>
+<!-- single -->
+<!-- script for responsive tabs -->						
+<script src="{% static 'js/easy-responsive-tabs.js'%}"></script>
+<script>
+	$(document).ready(function () {
+	$('#horizontalTab').easyResponsiveTabs({
+	type: 'default', //Types: default, vertical, accordion           
+	width: 'auto', //auto or any width like 600px
+	fit: true,   // 100% fit in a container
+	closed: 'accordion', // Start closed if in accordion view
+	activate: function(event) { // Callback function if tab is switched
+	var $tab = $(this);
+	var $info = $('#tabInfo');
+	var $name = $('span', $info);
+	$name.text($tab.text());
+	$info.show();
+	}
+	});
+	$('#verticalTab').easyResponsiveTabs({
+	type: 'vertical',
+	width: 'auto',
+	fit: true
+	});
+	});
+</script>
+<!-- FlexSlider -->
+<script src="{% static 'js/jquery.flexslider.js'%}"></script>
+						<script>
+						// Can also be used with $(document).ready()
+							$(window).load(function() {
+								$('.flexslider').flexslider({
+								animation: "slide",
+								controlNav: "thumbnails"
+								});
+							});
+						</script>
+					<!-- //FlexSlider-->
+<!-- //script for responsive tabs -->		
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="{% static 'js/move-top.js'%}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.easing.min.js'%}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+
+<!-- for bootstrap working -->
+<script type="text/javascript" src="{% static 'js/bootstrap.js'%}"></script>
+
+
+
+<script type="text/javascript">
+	
+
+	function modal_foton (url){
+
+		$('#modal_fotonn').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+
+
+	function bicicleta_electrica (url){
+
+		$('#bicicleta_electricas').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+
+
+	function motos_electrica (url){
+
+		$('#motos_electricas').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+	function motos_clasica (url){
+
+		$('#motos_clasicas').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+
+
+function otras_marcas_moto (url){
+
+		$('#otras_marcas_motos').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+
+
+	function aceite (url){
+
+		$('#aceites').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+
+
+	function repuesto (url){
+
+		$('#repuestos').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+
+</script>
+
+
+{% endblock extra_js %}
+</body>
+</html>

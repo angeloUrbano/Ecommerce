@@ -47,10 +47,33 @@ class singupForm(forms.Form):
 		profile= Profile(user=user)
 		profile.save()
 
+class ProfileForm(forms.ModelForm):
 
-class ProfileForm(forms.Form):
+	class Meta:
+		model=Profile
 
-	email = forms.EmailField(max_length=100 , required=True)
-	state = forms.CharField(max_length=500 , required=False)
-	phone_number = forms.CharField(max_length=20 , required=False)
-	interest = forms.CharField(max_length=20 , required=False)
+		fields=[ 'primer_nombre' , 'apellido', 'state' , 'phone_number' , 'interest'  ]
+
+
+		labels = {
+			'primer_nombre': 'Nombre',
+			'apellido': 'Apellido',
+			'state': 'Estado',
+			'phone_number': 'Telefono',
+			'interest': 'Tipo de moto que posees ',
+			}
+		widgets = {
+			'primer_nombre' : forms.TextInput(attrs={'class':'form-control'}),
+			'apellido' : forms.TextInput(attrs={'class':'form-control'}),
+			'state' : forms.Select(attrs={'class':'form-control'}),
+			'phone_number' : forms.TextInput(attrs={'class':'form-control'}),
+			'interest' : forms.Select(attrs={'class':'form-control'})
+		}
+
+
+
+
+
+
+
+	

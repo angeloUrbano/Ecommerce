@@ -1,157 +1,1410 @@
-{% extends "base.html" %}
+{% load cart_template_tags %}
+{% load staticfiles %}
 
-{% block content %}
-  <main>
-    <div class="container">
 
-      <!--Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
 
-        <!-- Navbar brand -->
-        <span class="navbar-brand">categorias:</span>
-
-        <!-- Collapse button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="basicExampleNav">
-
-          <!-- Links -->
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Todas
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Motos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Carros</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">repuestos</a>
-            </li>
-
-          </ul>
-          <!-- Links -->
-
-          <form class="form-inline" method="get">
-            <div class="md-form my-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="Buscar..." name="buscar" aria-label="Search">
-              <button  type="submit" style="color: blue ">Buscar...</button> 
-            </div>
-          </form>
-        </div>
-        <!-- Collapsible content -->
-
-      </nav>
-      <!--/.Navbar-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Multimotores|Home </title>
+<!--/tags -->
 
 
 
 
-      <!--Section: Products v.3-->
-      <section class="text-center mb-4">
 
-        <div class="row wow fadeIn">
+<meta property="og:title" content="Probando meta etiqueta" />
+<meta property="og:type" content="product" />
+<meta property="og:url" content="https://pruebamultimotoresgemca.herokuapp.com/" />
+<meta property="og:image" content="https://pruebamultimotoresgemca.herokuapp.com/static/images/logo_sesion.jpg" />
+<meta property="og:description" content="aqui se debe colocar una descripcion" />
+<meta property="og:site_name" content="Multimotores GEMCA" />
+<meta property="product:price:amount" content="30" />
+<meta property="product:price:currency" content="EUR" />
 
-          {% for producto in Producto %}
-          <div class="col-lg-3 col-md-6 mb-4">
 
-            <div class="card">
 
-              <div class="view overlay">
-                {% comment %} <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top" {% endcomment %}
-                <img src="{{ producto.image.url }}" class="card-img-top">
-                <a href="{{ producto.get_absolute_url }}">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
 
-              <div class="card-body text-center">
-                <a href="" class="grey-text">
-                  <h5>{{ producto.get_category_display }}</h5>
-                </a>
-                <h5>
-                  <strong>
-                    <a href="{{ producto.get_absolute_url }}" class="dark-grey-text">{{ producto.title }}
-                      <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-success"><span >Agregar al carrito</span></a>
-                      
-                    </a>
-                  </strong>
-                </h5>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Elite Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>  
+<!--//tags -->
 
-                <h4 class="font-weight-bold blue-text">
-                  <strong>$
-                  {% if producto.discount_price %}
-                  {{ producto.discount_price }}
-                  {% else %}
-                  {{ producto.price }}
-                  {% endif %}
-                  </strong>
-                </h4>
 
-              </div>
+<link href="{% static 'fontello-c9f57a93/css/fontello.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'fontello-d44e7aef/css/fontello.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet"> 
+<link href="{% static 'css/easy-responsive-tabs.css' %}" rel='stylesheet' type='text/css'/>
+<!-- //for bootstrap working -->
 
-            </div>
 
-          </div>
-          {% endfor %}
-        </div>
+  <style type="text/css">
 
-      </section>
-      <!--Section: Products v.3-->
+	#nav ul{
 
-    <div style="float: :right ">
-      <p style="color: black">Total :  {{importe_total_carro}}</p>
-      {% include  "carro/widget.html" %}
+		list-style: none;
+		padding: 0;
+	}
 
+	#nav li{
+		line-height: 3rem;
+		position: relative;
+	}
+	#nav li ul {
+		position: absolute;
+	}
+
+
+
+	#nav a{
+		color: #ddd;
+		display: block;
+		padding: 0 2.5em;
+
+		text-decoration: none;
+		transition: .4s;
+	}
+
+	#nav a:hover{
+		background: : rgba(0,0,0,.5);
+		color: #002961;
+	}
+
+
+	
+
+	
+
+
+
+	
+	#nav > ul {
+	background : #89857A;
+	display: table;
+	width: 250px;
+
+
+	}
+
+
+	#nav > ul > li{
+		float: left;
+
+
+	}
+
+
+
+
+	#nav li li{
+		background: #000000;
+		width: 200%;
+		max-height: 0;
+		overflow: hidden;
+		transition: all .6s;
+	}
+
+
+	#nav li:hover  > ul > li{
+		max-height: 500px;
+		overflow: visible;
+	}
+
+
+	#nav > ul > li > ul{
+		top: 100%;
+	}
+
+
+	#nav ul  ul{
+		left: 100%;
+		top: 0;
+	}
+
+	#image{
+		position: relative;
+		right: 10%;
+
+
+	}
+
+
+	
+
+
+</style>
+
+
+
+
+
+
+
+</head>
+<body>
+<!-- header -->
+<div class="header" id="home">
+	<div class="container">
+		<ul>
+		    <li> <a style="color: #000;" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Iniciar Sesion </a></li>
+			<li> <a style="color: #000;" href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> crea Una cuenta</a></li>
+			<li style="color: #000;"><i class="fa fa-phone" aria-hidden="true"></i> LLamar: 01234567898</li>
+			<li ><i class="fa fa-envelope-o" aria-hidden="true"></i> <a  style="color: #000;"href="mailto:info@example.com">Multimotores@example.com</a></li>
+		</ul>
+	</div>
+</div>
+<!-- //header -->
+<!-- header-bot -->
+<div class="header-bot">
+	<div class="header-bot_inner_wthreeinfo_header_mid">
+		<a href="{% url 'ventas:articulos'%}">
+		<div class="col-md-4 header-middle">
+			<img style="margin-left: 85px; " src="{% static 'images/icono.png' %}">
+			<!--<form action="{% url 'ventas:ListCatalogoo'%}" method="get">
+					<input type="search" name="buscar" placeholder="Buscar Producto..." required="">
+					<input type="submit" value=" ">
+				<div class="clearfix"></div>
+			</form>-->
+		</div>
+		</a>
+		<!-- header-bot -->
+			<div class="col-md-4 logo_agile">
+				<h1><a  style="font-size: 45px; max-width: 19px; color: #000; " href="{% url 'ventas:articulos'%}"><span style="font-size: 45px;">M</span style="color: #000;">ultimotores<i class="fa fa-shopping-bag top_logo_agile_bag" aria-hidden="true"><span style="font-size: 20px; background:white; color: black ">GEMCA</span></i></a></h1>
+			</div>
+        <!-- header-bot -->
+		<div  class="col-md-4 agileits-social top_content">
+						<ul  style="margin-left: 40;"class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
+						                                   <li class="share"><i style="font-size: 30px; color: #002961;  margin-left: 50px;" class="fa fa-share-alt" aria-hidden="true"></i> </li>
+															<li><a href="https://www.facebook.com/sharer.php?u=https://pruebamultimotoresgemca.herokuapp.com/" target="_blank&t=mi pagina" class="facebook">
+																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
+															<li><a href="https://api.whatsapp.com/send?text=https://pruebamultimotoresgemca.herokuapp.com/" target="_blank&t=mi pagina" class="twitter"> 
+																  <div class="front"><i class="fa fa-whatsapp" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-whatsapp" aria-hidden="true"></i></div></a></li>
+															
+													</ul>
+
+
+
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!-- //header-bot -->
+<!-- banner -->
+
+
+<div class="ban-top">
+	<div class="container">
+		<div class="top_nav_left">
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+				  <ul class="nav navbar-nav menu__list">
+					<li style="color: #000;" class="active menu__item menu__item--current"><a style="color: #000;" class="menu__link" href="{% url 'ventas:articulos'%}">Principal <span class="sr-only">(current)</span></a></li>
+					{% if not request.user.is_staff %}
+					<!--<li class=" menu__item"><a class="menu__link" href="#">Quienes somos</a></li>-->
+						{% endif%}
+
+
+					<li class="dropdown menu__item">
+						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
+							<ul class="dropdown-menu multi-column columns-3" >
+								<div class="agile_inner_drop_nav_info">
+									
+									<div class="col-sm-3 multi-gd-img">
+
+										<nav id="nav">
+											
+										
+										<ul class="multi-column-dropdown" >
+
+
+
+
+
+
+											<li><a style="color: #000;"  onclick="modal_foton('{% url 'datos_submenu:sub_fotonn'   %}')">Motos Empire</a>
+
+												
+
+											</li>
+											
+											
+
+											
+
+
+
+											
+
+
+
+											
+
+												
+
+											</li>
+											<li><a style="color: #000;" onclick="aceite('{% url 'datos_submenu:aceitesub'   %}')">Aceites</a>
+
+
+												
+
+
+											</li>
+
+
+
+
+
+
+
+
+
+
+
+											<li><a style="color: #000;" onclick="repuesto('{% url 'datos_submenu:repuestosub'   %}')">Repuestos</a>
+
+
+											
+											
+
+
+
+											</li>
+
+
+
+
+
+
+										</ul>
+
+
+										</nav>
+									</div>
+									
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+					</li>
+					{% if not request.user.is_staff %}
+					<li class=" menu__item"><a class="menu__link" href="{% url 'ventas:contactame'%}">Contacto</a></li>
+					{% endif%}
+				
+				
+
+
+					{% if not request.user.is_authenticated %}
+					
+
+					<li class=" menu__item"><a class="menu__link" href="{% url 'login' %}">Iniciar sesion</a></li>
+					<!--
+					<li class=" menu__item"><a class="menu__link" href="{% url 'login'%}">Login</a></li>-->
+
+					<li class=" menu__item"><a class="menu__link" href="{% url 'signup' %}">Registrate</a></li>
+
+						{% endif%}
+
+					
+						
+
+		{% if  request.user.is_authenticated %}				
+
+	{% if request.user.is_staff %}	
+
+	<li class=" menu__item"><a class="menu__link" href="{% url 'ventas:orden_administrador' %}">Ordenes</a></li>
+	<li class=" menu__item"><a class="menu__link" onclick="Crear_articulo('{% url 'ventas:create_articulo'   %}')">Crear Producto</a></li>
+
+<li class=" menu__item"><a class="menu__link" href="{% url 'ventas:create_Marketin' %}">Campaña</a></li>
+<li class=" menu__item"><a class="menu__link" href="{% url 'ventas:solicitud' %}">Solicitud Producto </a></li>
+
+	
+	{% endif%}
+
+	{% endif%}
+	{% if  request.user.is_authenticated %}	
+
+
+	{% if  not request.user.is_staff %}	
+
+
+
+	<li class=" menu__item"><a class="menu__link" href="{% url 'ventas:orden_realizada' %}">Ordenes</a></li>
+
+	{% endif%}
+	{% endif%}
+	{% if  request.user.is_authenticated %}	
+
+					<li class=" menu__item"><a class="menu__link" href="{% url 'logout' %}">Cerrar Sesion</a></li>
+						{% endif%}
+
+					
+					
+					
+				  </ul>
+				</div>
+			  </div>
+			</nav>	
+		</div>
+	
+		<div class="top_nav_right">
+			
+					
+  
+						</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>  
+
+
+
+
+<!-- //banner-top -->
+
+
+
+
+
+<!-- modal editar producto -->
+
+
+
+
+
+<!-- fin  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% load account socialaccount %}
+
+
+
+{% get_providers as socialaccount_providers %}
+
+{% if socialaccount_providers %}
+
+
+<div class="socialaccount_ballot">
+
+  <ul class="socialaccount_providers">
+   
+  </ul>
+
+ 
+
+</div>
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+{% else %}
+
+{% endif %}
+
+<!-- Modal1 -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+						<div class="modal-body modal-body-sub_agile">
+						<div class="col-md-8 modal_body_left modal_body_left1">
+						<h3 class="agileinfo_sign">Iniciar <span>Sesion</span></h3>
+									<form action="{% url 'login'%}" method="post">
+										{% csrf_token%}
+							<div class="styled-input agile-styled-input-top">
+								<input   type="text" placeholder="email" name="email">
+								<label>Correo</label>
+								<span></span>
+							</div>
+							<div class="styled-input">
+								<input type="password" name="password" required=""> 
+								<label>Contraseña</label>
+								<span></span>
+							</div> 
+							<input type="submit" value="Iniciar Sesión">
+						</form>
+						  <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
+															<li><a href="{% provider_login_url 'facebook'  method='js_sdk' %}" class="facebook">
+																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
+															<li><a href="{% provider_login_url 'google' %}" class="twitter"> 
+																  <div class="front"><i class="fa fa-google" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-google" aria-hidden="true"></i></div></a></li>
+															
+														</ul>
+														<div class="clearfix"></div>
+														<p><a href="#" data-toggle="modal" data-target="#myModal2" > Aun No Posee  Una Cuenta ?</a></p>
+
+						</div>
+						<div class="col-md-4 modal_body_right modal_body_right1">
+							<img src="{% static 'images/logo_sesion.jpg' %}" alt=" "/>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<!-- //Modal content-->
+			</div>
+		</div>
+<!-- //Modal1 -->
+<!-- Modal2 -->
+		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+						<div class="modal-body modal-body-sub_agile">
+						<div class="col-md-8 modal_body_left modal_body_left1">
+						<h3 class="agileinfo_sign">Crea Una <span>Cuenta</span></h3>
+						 <form method="POST" action="{% url 'signup'%}">
+						 	{% csrf_token %}
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" name="username" required="">
+								<label>Name</label>
+								<span></span>
+							</div>
+							<div class="styled-input">
+								<input type="email" name="email" required=""> 
+								<label>Email</label>
+								<span></span>
+							</div> 
+							<div class="styled-input">
+								<input type="password" name="password" required=""> 
+								<label>Password</label>
+								<span></span>
+							</div> 
+
+							<div class="styled-input">
+								<input type="password" name="password_confirmation" required=""> 
+								<label>Confirmar Password</label>
+								<span></span>
+							</div> 
+							
+							<input type="submit" value="Crear Cuenta">
+						</form>
+						  <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
+															<li><a href="{% provider_login_url 'facebook'  method='js_sdk' %}" class="facebook">
+																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
+															<li><a href="{% provider_login_url 'google' %}" class="twitter"> 
+																  <div class="front"><i class="fa fa-google" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-google" aria-hidden="true"></i></div></a></li>
+														</ul>
+														<div class="clearfix"></div>
+														<p><a href="#">Al hacer clic en registrarse, acepto sus términos</a></p>
+
+						</div>
+						<div class="col-md-4 modal_body_right modal_body_right1">
+							<img src="{% static 'images/logo_sesion.jpg' %}" alt=" "/>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<!-- //Modal content-->
+			</div>
+		</div>
+<!-- //Modal2 -->
+
+<!-- banner -->
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1" class=""></li>
+			<li data-target="#myCarousel" data-slide-to="2" class=""></li>
+			<li data-target="#myCarousel" data-slide-to="3" class=""></li>
+			<li data-target="#myCarousel" data-slide-to="4" class=""></li> 
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="item active"> 
+				<div class="container">
+					<div class="carousel-caption">
+						<h3>Multimotores<span>GEMCA</span></h3>
+						<p></p>
+						<a style="background-color: #e2610c;" class="hvr-outline-out button2" href="{% url 'ventas:catalogo' %}">Galeria de productos </a>
+					</div>
+				</div>
+			</div>
+			<div class="item item2"> 
+				<div class="container">
+					<div class="carousel-caption">
+						<h3>Multimotores <span>GEMCA</span></h3>
+						<p></p>
+						<a style="background-color: #e2610c;" class="hvr-outline-out button2" href="{% url 'ventas:catalogo' %}">Galeria de productos </a>
+					</div>
+				</div>
+			</div>
+			<div class="item item3"> 
+				<div class="container">
+					<div class="carousel-caption">
+						<h3>Multimotores <span>GEMCA</span></h3>
+						<p></p>
+						<a style="background-color: #e2610c;" class="hvr-outline-out button2" href="{% url 'ventas:catalogo' %}">Galeria de productos </a>
+					</div>
+				</div>
+			</div>
+			<div class="item item4"> 
+				<div class="container">
+					<div class="carousel-caption">
+						<h3>Multimotores <span>GEMCA</span></h3>
+						<p></p>
+						<a style="background-color: #e2610c;" class="hvr-outline-out button2" href="{% url 'ventas:catalogo' %}">Galeria de productos </a>
+					</div>
+				</div>
+			</div>
+			<div class="item item5"> 
+				<div class="container">
+					<div class="carousel-caption">
+						<h3>Multimotores <span>GEMCA</span></h3>
+						<p></p>
+						<a style="background-color: #e2610c;" class="hvr-outline-out button2" href="{% url 'ventas:catalogo' %}">Galeria de productos </a>
+					</div>
+				</div>
+			</div> 
+		</div>
+		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+		<!-- The Modal -->
+    </div> 
+	<!-- //banner -->
+    <div   class="banner_bottom_agile_info">
+	    <div class="container">
+            <div class="banner_bottom_agile_info_inner_w3ls">
+    	           <div class="col-md-6 wthree_banner_bottom_grid_three_left1 grid">
+						<figure class="effect-roxy">
+							<img src="{% static 'images/cuadro2.jpg' %}" alt=" " class="img-responsive" />
+							<figcaption>
+								<h3><span style="color: #D88416;">Motos Electricas</span>Motos Electricas</h3>
+								<p>10% de Descuento </p>
+							</figcaption>			
+						</figure>
+					</div>
+					 <div class="col-md-6 wthree_banner_bottom_grid_three_left1 grid">
+						<figure class="effect-roxy">
+							<img src="{% static 'images/cuadro1.jpg' %}" alt=" " class="img-responsive" />
+							<figcaption>
+								<h3><span style="color: #D88416;">Diferentes Productos</span>Para tu Moto</h3>
+								<p>Exelente Precio </p>
+							</figcaption>			
+						</figure>
+					</div>
+					<div class="clearfix"></div>
+		    </div> 
+		 </div> 
     </div>
+	<!-- schedule-bottom -->
+	
+<!-- //schedule-bottom -->
+  <!-- banner-bootom-w3-agileits -->
 
-      <!--Pagination-->
+			<div class="map" data-wow-delay=".5s">
+				<h3 class="tittle" style="color: #D88416;">NUESTRA UBICACIÓN</h3>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926.9222884687942!2d-68.00583748588781!3d10.186966372583756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e80678a8de081b1%3A0x604e718dffeb15cc!2sMultimotores%20GEMCA!5e0!3m2!1ses!2sve!4v1626649800034!5m2!1ses!2sve" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+		</div>
 
-      {% if is_paginated %}
-      <nav class="d-flex justify-content-center wow fadeIn">
-        <ul class="pagination pg-blue">
 
-          {% if page_obj.has_previous %}
-          <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-              <span class="sr-only">Previous</span>
-            </a>
-          </li>
-          {% endif %}
 
-          <li class="page-item active">
-            <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
 
-          {% if page_obj.has_next %}
-          <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Next</span>
-            </a>
-          </li>
-          {% endif %}
-        </ul>
-      </nav>
-      {% endif %}
 
+	<div style="margin-left: 0;" class="banner-bootom-w3-agileits">
+	<div class="container">
+		<h3 class="wthree_text_info" >Productos<span style="color: #D88416;"> Destacados</span></h3>
+	
+		<div  class="col-md-5 bb-grids bb-left-agileits-w3layouts">
+			
+			   <div class="bb-left-agileits-w3layouts-inner grid">
+					<figure class="effect-roxy">
+							<img  src="{% static 'images/mujer_moto.jpg' %}" alt=" " class="img-responsive" />
+							<figcaption>
+								<h3><span style="color: #D88416;">V</span>enta</h3>
+								<p>Productos a muy buen precio%</p>
+							</figcaption>			
+						</figure>
+			    </div>
+			
+		</div>
+		<div class="col-md-7 bb-grids bb-middle-agileits-w3layouts">
+		      <a >
+		       <div class="bb-middle-agileits-w3layouts grid">
+			           <figure class="effect-roxy">
+							<img src="{% static 'images/cascos.jpg' %}" alt=" " class="img-responsive" />
+							<figcaption>
+								<h3><span style="color:#D88416;" >V</span>enta </h3>
+								<p>Exelentes precios en cascos%</p>
+							</figcaption>			
+						</figure>
+		        </div>
+				</a>
+				<a >
+		      <div class="bb-middle-agileits-w3layouts forth grid">
+						<figure class="effect-roxy">
+							<img src="{% static 'images/loco2.jpg' %}" alt=" " class="img-responsive">
+							<figcaption>
+								<h3><span style="color: #D88416;">V</span>enta </h3>
+								<p>Descuento en asientos%</p>
+							</figcaption>		
+						</figure>
+					</div>
+					</a>
+		<div class="clearfix"></div>
+	</div>
+	</div>
     </div>
-  </main>
+   
+<!--/grids-->
+      <div class="agile_last_double_sectionw3ls">
+            <div class="col-md-6 multi-gd-img multi-gd-text ">
+					<a ><img src="{% static 'images/ultimos_abajo.jpg' %}" alt=" "><h4>Flat <span>50%</span> offer</h4></a>
+					
+			</div>
+			 <div class="col-md-6 multi-gd-img multi-gd-text ">
+					<a ><img src="{% static 'images/loco.jpg' %}" alt=" "><h4>Flat <span>50%</span> offer</h4></a>
+			</div>
+			<div class="clearfix"></div>
+	   </div>							
+<!--/grids-->
+<!-- /new_arrivals -->
 
-{% endblock content %}
+ 
+
+<div class="contenedor">
+
+
+	<div class="redes">
+
+		<a href="https://wa.me/5804125616872" class="btn-wsp" target="_blank">
+		<i class="icon-whatsapp"> </i>
+ 		</a> 
+
+
+{% if not request.user.is_staff %}
+		{% if request.user.is_authenticated %}
+		
+ 		<a   href="{% url 'carro:order-summary' %}" class="cart-angelo"  >
+		<i class="icon-basket-1"><span class="badge red z-depth-1 mr-1" style="background-color: red"> {{ request.user |cart_item_count }} </span> </i>
+ 		</a> 
+		
+{% endif %}
+{% endif %}
+
+
+	</div>
+	
+
+
+
+
+
+</div>
 
 
 
 
 
 
+
+
+
+
+
+<br>	
+		    <br>
+	<div class="new_arrivals_agile_w3ls_info"> 
+		<div class="container">
+		    <h3 class="wthree_text_info" style="color: #D88416;">Nuestras <span style="color: #D88416;">Ofertas</span></h3>
+		    <br>	
+		    <br>
+				<div id="horizontalTab">
+						<ul class="resp-tabs-list" >
+							<li style="background-color: #D88416;">Ofertas</li>
+							<a style="background-color: #D88416;" href="{% url 'ventas:catalogo'%}"><li> Catalogo de Productos</li></a>
+							
+						</ul>
+
+						</div>
+					</div>
+					</div>
+
+
+        
+
+
+
+ 
+
+		
+
+
+
+
+
+
+
+
+				
+				<div class="resp-tabs-container">
+					 
+					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+						 {% for producto in producto %} 
+						<div class="col-md-3 product-men">
+							<div class="men-pro-item simpleCart_shelfItem">
+								<div class="men-thumb-item">
+									<img src="{{ producto.image.url }}" alt="" class="pro-image-front" style="width: 270px; height: 335px">
+									<img src="{{ producto.image2.url }}" alt="" class="pro-image-back" style="width: 270px; height: 335px">
+										<div class="men-cart-pro">
+											<div class="inner-men-cart-pro">
+												<a href="{% url 'ventas:detail' producto.id %}" class="link-product-add-cart">Ver Producto</a>
+											</div>
+										</div>
+										<span class="product-new-top">Oferta</span>
+										
+								</div>
+								<div class="item-info-product ">
+						<h4><a href="{% url 'ventas:detail' producto.id %}">{{ producto.title }}</a></h4>
+									{% if producto.discount_price %}
+										<div class="info-product-price">
+											<span class="item_price">${{ producto.discount_price }}</span>
+                      {% endif %}
+											<del>${{ producto.price }}</del>
+
+										</div>
+										{% if not request.user.is_staff %}
+									<a href="{% url 'ventas:detail' producto.id %}"><i   style="width: 50px; font-size: 30px; color: #002961;" class="fa fa-cart-plus" aria-hidden="true"></i></a>
+									
+
+									{% endif %}
+
+									{% if  request.user.is_staff %}
+
+									<button  class="btn btn-success" style=" border-radius: 15px;:  " onclick="abrir_modal_edicion('{% url 'ventas:editar_producto'  producto.id %}')">Editar</button>
+
+
+
+										<button class="btn btn-warning" style=" border-radius: 15px; background-color: #e2610c:  " onclick="abrir_singout_modal('{% url 'ventas:eliminar_producto'  producto.id %}')">Eliminar</button>	
+										{% endif %}								
+								</div>
+							</div>
+						</div>
+						</div>
+						{% endfor %}
+						<div class="clearfix"></div>
+ 					
+						</div>	
+
+
+						<div class="pagination">
+   <div style="text-align: center; justify-content:center; ">
+	
+	
+
+
+
+									<span class="step-links" style="text-align: center;">
+        {% if page_obj.has_previous %}
+            <a class="btn btn-primary"  href="?page=1">&laquo; Primero</a>
+            <a  class="btn btn-primary"  href="?page={{ page_obj.previous_page_number }}">Previo</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-warning" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+            <a class="btn btn-warning"  href="?page={{ page_obj.paginator.num_pages }}">Ultima &raquo;</a>
+        {% endif %}
+    </span>
+	</div>
+
+							
+					<br>
+				<br>
+							
+						
+						
+		
+						
+
+
+
+
+						<!--modales-->
+						<div class="modal fade" id="edicion" role="dialog">
+											
+
+
+										</div>
+
+
+										<div class="modal fade" id="sing_out" role="dialog">
+											
+
+
+										</div>
+
+
+
+										<div class="modal fade" id="modal_login" role="dialog">
+											
+
+
+										</div>
+
+
+										<div class="modal fade" id="create_artic" role="dialog">
+											
+
+
+										</div>
+
+
+
+										<!--modales de submenu-->
+
+										<div class="modal fade" id="modal_fotonn" role="dialog">
+											
+
+
+										</div>
+
+
+
+
+										<div class="modal fade" id="bicicleta_electricas" role="dialog">
+											
+
+
+										</div>
+
+
+
+
+										<div class="modal fade" id="motos_electricas" role="dialog">
+											
+
+
+										</div>
+
+
+
+										<div class="modal fade" id="motos_clasicas" role="dialog">
+											
+
+
+										</div>
+
+
+										<div class="modal fade" id="otras_marcas_motos" role="dialog">
+											
+
+
+										</div>
+
+
+										<div class="modal fade" id="aceites" role="dialog">
+											
+
+
+										</div>
+
+
+
+										<div class="modal fade" id="repuestos" role="dialog">
+											
+
+
+										</div>
+
+
+
+
+
+
+										<!--fin modales-->
+
+
+
+
+										<!--fin modales-->
+				
+
+
+
+
+
+    
+	<!-- //new_arrivals --> 
+	<!-- /we-offer -->
+		<div class="sale-w3ls">
+			<div class="container">
+				<h6>Motos electricas <span>a</span> increibles precios</h6>
+ 
+				<a  style="background-color: #e2610c;" class="hvr-outline-out button2" href="{% url 'ventas:catalogo' %}">Galeria de Productos </a>
+			</div>
+		</div>
+	<!-- //we-offer -->
+<!--/grids-->
+<div class="coupons">
+		<div class="coupons-grids text-center">
+			<div class="w3layouts_mail_grid">
+				<div class="col-md-3 w3layouts_mail_grid_left">
+					<div class="w3layouts_mail_grid_left1 hvr-radial-out">
+						<i class="fa fa-truck" aria-hidden="true"></i>
+					</div>
+					<div class="w3layouts_mail_grid_left2">
+						<h3>Envios</h3>
+						<p>Envios a cualquier parte del pais</p>
+					</div>
+				</div>
+				<div class="col-md-3 w3layouts_mail_grid_left">
+					<div class="w3layouts_mail_grid_left1 hvr-radial-out">
+						<i class="fa fa-mobile" aria-hidden="true"></i>
+					</div>
+					<div class="w3layouts_mail_grid_left2">
+						<h3>24/7 Soporte</h3>
+						<p>Brindamos atencion al cliente 24/7</p>
+					</div>
+				</div>
+				<div class="col-md-3 w3layouts_mail_grid_left">
+					<div class="w3layouts_mail_grid_left1 hvr-radial-out">
+						<i class="fa fa-credit-card" aria-hidden="true"></i>
+					</div>
+					<div class="w3layouts_mail_grid_left2">
+						<h3>Transacciones </h3>
+						<p> Realiza tus compras de forma segura </p>
+					</div>
+				</div>
+					<div class="col-md-3 w3layouts_mail_grid_left">
+					<div class="w3layouts_mail_grid_left1 hvr-radial-out">
+						<i class="fa fa-gift" aria-hidden="true"></i>
+					</div>
+					<div class="w3layouts_mail_grid_left2">
+						<h3>Descuentos</h3>
+						<p> Ofrecemos diferentes ofertas en productos</p>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+
+		</div>
+</div>
+<!--grids-->
+<!-- footer -->
+<div class="footer">
+	<div class="footer_agile_inner_info_w3l">
+		<div class="col-md-3 footer-left">
+			<h2><a style="color: #000;" href="{% url 'ventas:articulos'%}"><span >M</span style="color: #000;">Ultimotores GEMCA </a></h2>
+			<p style="color: #000;"> Lorem ipsum quia dolor
+			sit amet, consectetur, adipisci velit, sed quia non 
+			numquam eius modi tempora.</p>
+			<ul class="social-nav model-3d-0 footer-social w3_agile_social two">
+															<li class="share"><i style="font-size: 30px; color: #002961;  margin-left: 50px;" class="fa fa-share-alt" aria-hidden="true"></i> </li>
+															<li><a href="https://www.facebook.com/sharer.php?u=https://pruebamultimotoresgemca.herokuapp.com/" target="_blank&t=mi pagina" class="facebook">
+																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
+															<li><a href="https://api.whatsapp.com/send?text=https://pruebamultimotoresgemca.herokuapp.com/" target="_blank&t=mi pagina" class="twitter"> 
+																  <div class="front"><i class="fa fa-whatsapp" aria-hidden="true"></i></div>
+																  <div class="back"><i class="fa fa-whatsapp" aria-hidden="true"></i></div></a></li>
+		</div>
+		<div class="col-md-9 footer-right">
+			<div class="sign-grds">
+				<div class="col-md-4 sign-gd">
+					<h4 style="color: #000;"> Nuestra <span style="color: #000;">Informacion</span> </h4>
+					<ul>
+						<li><a style="color: #000;" href="{% url 'ventas:articulos'%}">Pincipal</a></li>
+						
+						<li><a  style="color: #000;"href="{% url 'ventas:ListCatalogoo'%}"> Productos</a></li>
+						<li><a style="color: #000;" href="{% url 'ventas:contactame'%}">Contacto</a></li>
+					</ul>
+				</div>
+				
+				<div class="col-md-5 sign-gd-two">
+					<h4 >Contactanos<span style="color: #000;"> A travez de</span></h4>
+					<div class="w3-address">
+						<div class="w3-address-grid">
+							<div class="w3-address-left">
+								<i class="fa fa-phone" aria-hidden="true"></i>
+							</div>
+							<div class="w3-address-right">
+								<h6 >Phone Number</h6>
+								<p>+1 234 567 8901</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="w3-address-grid">
+							<div class="w3-address-left">
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+							</div>
+							<div class="w3-address-right">
+								<h6 >Email Address</h6>
+								<p>Email :<a href="mailto:example@email.com"> mail@example.com</a></p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="w3-address-grid">
+							<div class="w3-address-left">
+								<i class="fa fa-map-marker" aria-hidden="true"></i>
+							</div>
+							<div class="w3-address-right">
+								<h6 >Ubicaion</h6>
+								<p>Av Cedeño, calle 105 , valencia , Carabobo 
+								
+								</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 sign-gd flickr-post">
+					
+					<ul>
+						
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		
+
+		<div class="clearfix"></div>
+	</div>
+		
+	</div>
+</div>
+<!-- //footer -->
+
+<!-- login -->
+			<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content modal-info">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
+						</div>
+						<div class="modal-body modal-spa">
+							<div class="login-grids">
+								<div class="login">
+									<div class="login-bottom">
+										<h3>Sign up for free</h3>
+										<form>
+											<div class="sign-up">
+												<h4>Email :</h4>
+												<input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">	
+											</div>
+											<div class="sign-up">
+												<h4>Password :</h4>
+												<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+												
+											</div>
+											<div class="sign-up">
+												<h4>Re-type Password :</h4>
+												<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+												
+											</div>
+											<div class="sign-up">
+												<input type="submit" value="REGISTER NOW" >
+											</div>
+											
+										</form>
+									</div>
+									<div class="login-right">
+										<h3>Sign in with your account</h3>
+										<form>
+											<div class="sign-in">
+												<h4>Email :</h4>
+												<input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">	
+											</div>
+											<div class="sign-in">
+												<h4>Password :</h4>
+												<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+												<a href="#">Forgot password?</a>
+											</div>
+											<div class="single-bottom">
+												<input type="checkbox"  id="brand" value="">
+												<label for="brand"><span></span>Remember Me.</label>
+											</div>
+											<div class="sign-in">
+												<input type="submit" value="SIGNIN" >
+											</div>
+										</form>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<p>By logging in you agree to our <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+<!-- //login -->
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- js -->
+
+<script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js'%}"></script>
+<!-- //js -->
+<script src="{% static 'js/modernizr.custom.js'%}"></script>
+	<!-- Custom-JavaScript-File-Links --> 
+	<!-- cart-js -->
+	<script src="{% static 'js/minicart.min.js'%}"></script>
+<script>
+	// Mini Cart
+	paypal.minicart.render({
+		action: '#'
+	});
+
+	if (~window.location.search.indexOf('reset=true')) {
+		paypal.minicart.reset();
+	}
+</script>
+
+	<!-- //cart-js --> 
+	<!-- single -->
+<script src="{% static 'js/imagezoom.js'%}"></script>
+<!-- single -->
+<!-- script for responsive tabs -->						
+<script src="{% static 'js/easy-responsive-tabs.js'%}"></script>
+<script>
+	$(document).ready(function () {
+	$('#horizontalTab').easyResponsiveTabs({
+	type: 'default', //Types: default, vertical, accordion           
+	width: 'auto', //auto or any width like 600px
+	fit: true,   // 100% fit in a container
+	closed: 'accordion', // Start closed if in accordion view
+	activate: function(event) { // Callback function if tab is switched
+	var $tab = $(this);
+	var $info = $('#tabInfo');
+	var $name = $('span', $info);
+	$name.text($tab.text());
+	$info.show();
+	}
+	});
+	$('#verticalTab').easyResponsiveTabs({
+	type: 'vertical',
+	width: 'auto',
+	fit: true
+	});
+	});
+</script>
+<!-- FlexSlider -->
+<script src="{% static 'js/jquery.flexslider.js'%}"></script>
+						<script>
+						// Can also be used with $(document).ready()
+							$(window).load(function() {
+								$('.flexslider').flexslider({
+								animation: "slide",
+								controlNav: "thumbnails"
+								});
+							});
+						</script>
+					<!-- //FlexSlider-->
+<!-- //script for responsive tabs -->		
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="{% static 'js/move-top.js'%}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.easing.min.js'%}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+
+<!-- for bootstrap working -->
+<script type="text/javascript" src="{% static 'js/bootstrap.js'%}"></script>
+
+
+<script type="text/javascript">
+	function abrir_modal_edicion(url){
+
+		$('#edicion').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+	function login_modal(url){
+
+		$('#modal_login').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+	function abrir_singout_modal (url){
+
+		$('#sing_out').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+	function Crear_articulo (url){
+
+		$('#create_artic').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+
+	function modal_foton (url){
+
+		$('#modal_fotonn').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+
+
+	function bicicleta_electrica (url){
+
+		$('#bicicleta_electricas').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+
+
+	function motos_electrica (url){
+
+		$('#motos_electricas').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+	function motos_clasica (url){
+
+		$('#motos_clasicas').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+
+
+function otras_marcas_moto (url){
+
+		$('#otras_marcas_motos').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+
+
+	function aceite (url){
+
+		$('#aceites').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+
+
+	function repuesto (url){
+
+		$('#repuestos').load(url , function(){
+
+			$(this).modal("show");
+
+		})
+
+	}
+
+
+
+	
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{% load staticfiles %}
+
+
+
+<head>
+    
+    <style type="text/css">
+        
+        #datos{
+
+          margin-left: 30px;
+          color: #D88416;
+        }
+
+
+    </style>
+
+
+</head>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title" style="text-align: center; color: #D88416;" > Detalles Moto Electica</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+
+            <div class="row justify-content-md-center">
+            <div class="col-6 pt-3 pb-3" id="profile-box">
+                
+              <div class="card-title py-3">
+            <form action="{% url 'ventas:create_articulo' %}" method="POST" enctype="multipart/form-data">
+             
+
+            <div class="modal-body modal-body-sub_agile">
+                <div class="col-md-8 modal_body_left modal_body_left1">
+                <div class="form-grup">
+
+
+
+ <div id="datos">
+                    
+	                           
+                                        <ul >
+                                            <li><a style="color: #002961;" href="{% url 'datos_submenu:moto_electrica1' %}">EK4</a></li>
+                                            <li><a style="color: #002961;" href="{% url 'datos_submenu:moto_electrica2' %}">GEV1000</a></li>
+                                            <li><a style="color: #002961;" href="{% url 'datos_submenu:moto_electrica3' %}">HD-1000-ZSN</a></li>
+                                        </ul>
+  </div>                              
+</div>
+
+</div>
+                            
+</div>
+                
+
+            </div>
+            
+             </div>   
+                
+
+            
+
+            </form>

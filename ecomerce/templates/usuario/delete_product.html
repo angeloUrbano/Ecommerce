@@ -1,0 +1,43 @@
+
+{% block content  %}
+
+
+
+<div style="text-align: center; justify-content:center; ">
+
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h2 class="modal-title"> Eliminar Producto</h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			</div>
+
+			<div class="row justify-content-md-center">
+            <div class="col-6 pt-3 pb-3" id="profile-box">
+              <div class="card-title py-3">
+			<form action="{% url 'ventas:eliminar_producto' object.id %}" method="POST">
+
+
+
+<form method="post">
+{% csrf_token %}
+<h3>Desea eliminar el registro de: <span style="color: red;">{{object.title}}</span></h3>
+
+
+
+
+<button class="btn btn-danger" type="submit">Sí, eliminar</button>
+	
+	<a class="btn btn-primary" href="{% url 'ventas:articulos'  %}">Cancelar</a>
+
+{% endblock %}
+
+</form>
+
+
+</div>
+</div>
+
+</div>
